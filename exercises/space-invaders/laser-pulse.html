@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Laser Pulse</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Laser Pulse</h1>
+	<img id="octopus1" src="images/octopus1.png" style="display:none">
+	<img id="octopus2" src="images/octopus2.png" style="display:none">	
+	<img id="cannon" src="images/cannon.png" style="display:none">
+	
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+ window.addEventListener("load",function(){ 
+          
+      let octopus1 = document.getElementById("octopus1"); 
+      let octopus2 = document.getElementById("octopus2");   
+      let cannonImage = document.getElementById("cannon"); 
+	  
+      let canvas = document.getElementById("canvas");
+      let g2d = canvas.getContext("2d");
+
+      let x = 100;
+      let y = 40;
+      let direction = 1;
+      let speed = 50;
+      let walkingSpeed = 5;
+	  
+      let octopusWidth = 30;
+      let octopusHeight = 18;
+      
+	  let fleetX = 0;
+	  let fleetY = 50;
+	  
+      let missile
+      
+      let startTime = Date.now();
+      let time = 0;
+      let lastTime = 0;
+      let dt = 0;
+      
+      let octopusImage = null;
+
+  // distance between the octopuses
+     let relativeX = [0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400];
+
+	// laser pulse object
+	let laserPulse = {
+                x : 400,
+                y : 0,
+                width : 2,
+                height : 10,
+                alive : false,
+                speed : 150,
+                };
+				
+     let cannon = {
+            x : 400,
+            y : 500,
+            width : octopusWidth,
+            height : octopusHeight,
+            direction : 0,
+            speed : 200
+            }  
+
+
+
+      draw();
+
+      function draw() {
+          
+        time = (Date.now() - startTime)/1000;
+        dt = time - lastTime;
+        lastTime = time; 
+        
+        g2d.clearRect(0, 0, 800, 800);
+        
+         // set which image to draw
+        if((walkingSpeed*time) % 2 > 1)
+                {
+                octopusImage = octopus1;
+                }
+            else
+                {
+                octopusImage = octopus2;
+                }
+        
+           // distance between the octopuses
+		let dx = 40;
+
+
+		// loop the body while i < 11 is true
+		for( let i = 0; i < 11; i = i + 1)
+			{
+			//draw an octopus 
+			g2d.drawImage(octopusImage, fleetX + relativeX[i] , fleetY , octopusWidth , octopusHeight); 
+			}
+			
+		fleetX = fleetX + direction * speed * dt;
+			
+			// changes direction if x is out of bounds
+		if (fleetX < 0 || fleetX > 360) {
+			  direction = direction * -1;
+			  
+			  fleetX = (fleetX < 0) ? 0 : 360; 
+			  
+  
+			}
+
+
+	
+	// draw cannon
+	g2d.drawImage(cannonImage, cannon.x  , cannon.y , cannon.width , cannon.height); 
+
+
+
+    // if laser pulse is alive change y position     
+    if(laserPulse.alive)
+        {
+        // update the position of the laser pulse
+        laserPulse.y = laserPulse.y-laserPulse.speed*dt;
+
+        // draw the laser pulse
+        g2d.fillRect(laserPulse.x, laserPulse.y, laserPulse.width, laserPulse.height);
+
+         // if laser pulse goes off the top of the screen
+        laserPulse.alive = (laserPulse.y > 0);
+        }
+ 
+
+
+       window.requestAnimationFrame(draw);
+      }
+     
+       // define a function to respond to a key down event 
+    function arrowKeyDown(event) {
+           // prevent the browser from doing its default behaviour to pressing left and right arrow keys
+          event.preventDefault();      
+          // test for right arrow
+         if(event.key == "ArrowRight") paddleDirection = 1;
+         if(event.key == "ArrowLeft") paddleDirection = -1 
+		 if(event.key == " ") 
+			{
+				laserPulse.alive = true;
+				laserPulse.x = cannon.x + cannon.width/2;
+				laserPulse.y = 500;
+			}
+		
+      } 
+
+// define a function to respond to a key down event 
+    function arrowKeyUp(event) {    
+          // test for right arrow
+          if(event.key == "ArrowRight") paddleDirection = 0;
+          if(event.key == "ArrowLeft") paddleDirection = 0;        
+      }
+
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keydown", arrowKeyDown);
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keyup", arrowKeyUp);
+
+	 });
+        
+        
+</script>
+</body>
+</html>

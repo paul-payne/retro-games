@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Canvas 2d</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Canvas 2D Graphics</h1>
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let g2d = canvas.getContext("2d");
+	  g2d.fillStyle="red"
+      g2d.fillRect(20, 30, 100, 150);
+    </script>
+  </body>
+</html>

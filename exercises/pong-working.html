@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Canvas 2d</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Pong</h1>
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+        {
+      let canvas3 = document.getElementById("canvas");
+      let g2d = canvas3.getContext("2d");
+     
+      let x = 100;
+      let y = 100;
+      let directionX = 1;
+     let directionY = 1;
+      let speedX = 5
+      let speedY = 4
+      
+      let paddleX = 0;
+      let paddleY = 550;
+      let paddleWidth = 100;
+      let paddleHeight = 20;
+      let paddleDirection = 0;
+      let paddleSpeed = 5;
+      
+      let score = 0;
+      
+     draw()
+      
+    function draw() {
+        g2d.clearRect(0, 0, 600, 600);
+        g2d.fillStyle = "black";
+        
+        g2d.font = "80px serif";
+        
+        g2d.fillText(score,280,100);
+        
+        g2d.fillRect(x, y, 10, 10);
+        
+        g2d.fillStyle = "black";
+        g2d.fillRect(paddleX, paddleY, paddleWidth, paddleHeight);
+        
+        paddleX = paddleX + paddleDirection*paddleSpeed;
+        
+        updateX();
+        updateY(); 
+        
+        collisionWithPaddle();
+        
+        window.requestAnimationFrame(draw);
+        }
+    
+    
+    function updateX()
+    {
+// change direction if x is out of range
+    if((x <= 0) || (x >= 590))
+        {
+        directionX = -1 * directionX;
+        } 
+
+    x = x + directionX * speedX; 
+    }    
+        
+       
+       
+       function updateY()
+    {
+// change direction if x is out of range
+    if((y <= 0))
+        {
+        directionY = 1;
+        } 
+
+   if( y > 600)
+   {
+       y = 0;
+   }
+
+    y = y + directionY * speedY; 
+    }    
+     
+     
+    function collisionWithPaddle()
+    {
+    if(y > paddleY && y < paddleY + paddleHeight && x >= paddleX+10 && x <= paddleX+paddleWidth-10)
+        {
+            directionY = -1;
+            score = score + 1;
+        }
+    }
+     
+       // define a function to respond to a key down event 
+    function arrowKeyDown(event) {
+           // prevent the browser from doing its default behaviour to pressing left and right arrow keys
+          event.preventDefault();      
+          // test for right arrow
+          if(event.key == "ArrowRight") paddleDirection = 1;
+          if(event.key == "ArrowLeft") paddleDirection = -1         
+      } 
+
+// define a function to respond to a key down event 
+    function arrowKeyUp(event) {    
+          // test for right arrow
+          if(event.key == "ArrowRight") paddleDirection = 0;
+          if(event.key == "ArrowLeft") paddleDirection = 0;        
+      }
+
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keydown", arrowKeyDown);
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keyup", arrowKeyUp);
+ }        
+     
+</script>
+</body>
+</html>

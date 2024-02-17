@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Canvas 2d</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Canvas 2D Graphics</h1>
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let g2d = canvas.getContext("2d");
+// octopus 1
+function octopus1(x,y)
+{
+        g2d.fillStyle = "black";
+        g2d.fillRect(x+60, y+0, 30, 10);
+        g2d.fillRect(x+20, y+10, 110, 10);
+        g2d.fillRect(x+0, y+20, 150, 40);
+        // legs
+        g2d.fillRect(x+40, y+60, 20, 10);
+        g2d.fillRect(x+90, y+60, 20, 10);
+        g2d.fillRect(x+30, y+70, 20, 10);
+        g2d.fillRect(x+100, y+70, 20, 10);
+        g2d.fillRect(x+60, y+70, 30, 10);
+        g2d.fillRect(x+0, y+80, 30, 10);
+        g2d.fillRect(x+120, y+80, 30, 10);
+
+        g2d.fillStyle = "white";
+        g2d.fillRect(x+30, y+40, 30, 10);
+        g2d.fillRect(x+90, y+40, 30, 10);
+}
+// octopus 2
+function octopus2(x,y)
+{
+        g2d.fillStyle = "black";
+        g2d.fillRect(x+60, y+0, 30, 10);
+        g2d.fillRect(x+20, y+10, 110, 10);
+        g2d.fillRect(x+0, y+20, 150, 40);
+        // legs
+        g2d.fillRect(x+30, y+60, 30, 10);
+        g2d.fillRect(x+90, y+60, 30, 10);
+        g2d.fillRect(x+10, y+70, 20, 10);
+        g2d.fillRect(x+120, y+70, 20, 10);
+        g2d.fillRect(x+60, y+70, 30, 10);
+
+        g2d.fillRect(x+30, y+80, 20, 10);
+        g2d.fillRect(x+100, y+80, 20, 10);
+
+        g2d.fillStyle = "white";
+        g2d.fillRect(x+30, y+40, 30, 10);
+        g2d.fillRect(x+90, y+40, 30, 10);
+}
+// call the function octopus1
+octopus1(200,20);
+octopus2(400,200);
+octopus2(0,300);
+
+    </script>
+  </body>
+</html>

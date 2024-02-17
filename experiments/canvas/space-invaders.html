@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Experiments - Retro-Games</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="http://127.0.0.1:5500/" target="_blank">
+  <link rel="icon" href="images/icon.png" />
+  <link rel="stylesheet" href="css/style-notes.css" />
+  <style>
+    canvas {
+      border: 1px solid white;
+    }
+
+    .pair {
+      display: flex;
+      justify-content: space-around
+    }
+
+    .icon {
+      width: fit-content;
+      height: fit-content;
+      margin: 2rem 0rem;
+      background-color: white;
+      border: 1px solid white
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="banner">
+      <a href="index.html">
+        <div id="credit">Retro-Games</div>
+      </a>
+      <h1>Experiments</h1>
+      <div id="credit">created by Paul Payne</div>
+    </div>
+
+    <nav>
+      <a href="index.html"><img src="images/home.png" alt="home" title="home" /></a>
+      <a href="pong.html"><img src="images/pong.png" alt="Pong game icon" title="link to Pong game" /></a>
+      <a href="space-invaders.html"><img src="images/space-invaders.png" alt="Space invaders icon"
+          title="link to Space Invaders game" /></a>
+      <a href="asteroids.html"><img src="images/asteroids.png" alt="Asteroids game icon"
+          title="link to Asteroids game" /></a>
+      <a href="pac-man.html"><img src="images/pac-man.png" alt="Pac-Man game icon" title="link to Pac-Man game" /></a>
+      <a href="experiments.html"><img src="images/experiments.png" alt="Code Experiments"
+          title="link to programming experiments" /></a>
+    </nav>
+  </header>
+  <main>
+    <article>
+
+      <h2>Space Invaders</h2>
+      <h2>Octopus</h2>
+      <div class="pair">
+        <div>
+          <canvas id="canvas1" width="150" height="90"></canvas>
+        </div>
+        <script src="js/experiments/canvas/octopus1.js"></script>
+        <div class="icon">
+          <img src="images/space-invaders/octopus1.png">
+        </div>
+      </div>
+      <div class="pair">
+        <div>
+          <canvas id="canvas2" width="150" height="90"></canvas>
+        </div>
+        <script src="js/experiments/canvas/octopus2.js"></script>
+        <div class="icon">
+          <img src="images/space-invaders/octopus2.png">
+        </div>
+      </div>
+      <h2>Crab</h2>
+      <div class="pair">
+        <div>
+          <canvas id="canvas3" width="110" height="80"></canvas>
+        </div>
+        <script src="js/experiments/canvas/crab1.js">
+
+        </script>
+        <div class="icon">
+          <img src="images/space-invaders/crab1.png">
+        </div>
+      </div>
+      <div class="pair">
+        <div>
+          <canvas id="canvas4" width="110" height="80"></canvas>
+        </div>
+        <script src="js/experiments/canvas/crab2.js">
+        </script>
+        <div class="icon">
+          <img src="images/space-invaders/crab2.png">
+        </div>
+      </div>
+
+      <h2>Squid</h2>
+      <div class="pair">
+        <div>
+          <canvas id="canvas5" width="80" height="80"></canvas>
+        </div>
+        <script src="js/experiments/canvas/squid1.js">
+
+        </script>
+        <div class="icon">
+          <img src="images/space-invaders/squid1.png">
+        </div>
+      </div>
+
+      <div class="pair">
+        <div>
+          <canvas id="canvas6" width="80" height="80"></canvas>
+        </div>
+        <script src="js/experiments/canvas/squid2.js">
+        </script>
+        <div class="icon">
+          <img src="images/space-invaders/squid2.png">
+        </div>
+      </div>
+
+      </div>
+</body>
+
+</html>

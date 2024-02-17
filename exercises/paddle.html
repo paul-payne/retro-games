@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Canvas 2d</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Canvas 2D Graphics</h1>
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+      let canvas2 = document.getElementById("canvas");
+      let g2d2 = canvas2.getContext("2d");
+      
+      //direction controls the updating of x 
+      let direction = 0;
+ 
+      let x = 100;
+      let y = 100;
+
+      let speed = 5
+      
+     draw()
+      
+    function draw() {
+        
+        g2d2.clearRect(0, 0, 800, 800);
+        g2d2.fillStyle = "black";
+        g2d2.fillRect(x, y, 150, 30);
+        
+         x = x + direction * speed; 
+        
+        window.requestAnimationFrame(draw);
+        }
+      
+
+// define a function to respond to a key down event 
+    function arrowKeyDown(event) {
+           // prevent the browser from doing its default behaviour to pressing left and right arrow keys
+          event.preventDefault();      
+          // test for right arrow
+          if(event.key == "ArrowRight") direction = 1;
+          if(event.key == "ArrowLeft") direction = -1         
+      } 
+
+// define a function to respond to a key down event 
+    function arrowKeyUp(event) {    
+          // test for right arrow
+          if(event.key == "ArrowRight") direction = 0;
+          if(event.key == "ArrowLeft") direction = 0;        
+      }
+
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keydown", arrowKeyDown);
+   // register the arrowKeysControl function to listen for keydown events
+     document.addEventListener("keyup", arrowKeyUp);
+</script>
+</body>
+</html>
